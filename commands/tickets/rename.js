@@ -2,6 +2,7 @@ const discord = require("discord.js");
 module.exports = {
     name: "rename",
     Staff: true,
+    CanaleAddorRemove: true,
     execute(message, client) {
         const rename = message.content.slice(8).trim();
 
