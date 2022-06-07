@@ -5,6 +5,7 @@ const config = require("../../config.json");
 module.exports = {
     name: "remove",
     Staff: true,
+    CanaleAddorRemove: true,
     async execute(interaction, client) {
         const chan = client.channels.cache.get(interaction.channelId);
         const user = interaction.mentions.members?.first()
