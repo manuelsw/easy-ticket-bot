@@ -111,7 +111,21 @@ module.exports = {
                             c.send({
                                 content: `Hello <@${interaction.user.id}>. Wait for a staffer to arrive!`
                             })
-                        }
+                            c.edit({
+                                permissionOverwrites: [{
+                    id: interaction.user.id,
+                    allow: ['VIEW_CHANNEL','SEND_MESSAGES']
+                },
+                {
+                    id: config.roleSupport,
+                    allow: ['VIEW_CHANNEL','SEND_MESSAGES']
+                },
+                {
+                    id: interaction.guild.roles.everyone,
+                    deny: ['VIEW_CHANNEL'],
+                },
+                ],
+                        })
 
                         if (i.values[0] == "discord") {
                             c.edit({
@@ -120,6 +134,22 @@ module.exports = {
                             c.send({
                                 content: `Hello <@${interaction.user.id}>. Wait for a staffer to arrive!`
                             })
+                            c.edit({
+                                permissionOverwrites: [{
+                    id: interaction.user.id,
+                    allow: ['VIEW_CHANNEL','SEND_MESSAGES']
+                },
+                {
+                    id: config.roleSupport,
+                    allow: ['VIEW_CHANNEL','SEND_MESSAGES']
+                },
+                {
+                    id: interaction.guild.roles.everyone,
+                    deny: ['VIEW_CHANNEL'],
+                },
+                ],
+                        })
+                            
                         }
                     }
                 })
