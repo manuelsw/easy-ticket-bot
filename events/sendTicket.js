@@ -2,9 +2,14 @@ const { MessageEmbed, MessageButton, MessageActionRow, MessageSelectMenu, Messag
 const config = require("../config.json");
 
 module.exports = {
-    name: "messageCreate",
-    execute(message) {
-        if (message.content == config.prefix + "setup") {
+    name: "ready",
+    execute(message, client) {
+
+        console.clear()
+        console.log("Thanks for download this bot ❤")
+        client.user.setActivity("Your Discord", { type: "WATCHING" })
+        const canale = client.channels.cache.get(config.ticketChannel);
+
             const embed = new MessageEmbed()
                 .setColor("RANDOM")
                 .setTitle("Ticket Assistance")
@@ -20,9 +25,9 @@ module.exports = {
                         .setStyle("PRIMARY")
                 );
         
-            message.channel.bulkDelete(100, true)
-            message.channel.send({ embeds: [embed], components: [button] })
-        }
+            canale.bulkDelete(100, true)
+            canale.send({ embeds: [embed], components: [button] })
+        
     }
 }
 
